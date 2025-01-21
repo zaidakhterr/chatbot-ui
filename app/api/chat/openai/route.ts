@@ -24,18 +24,28 @@ export async function POST(request: Request) {
       organization: profile.openai_organization_id
     })
 
+    // TODO: Fix
+    const maxTokens =
+      chatSettings.model === "gpt-4-vision-preview" ||
+      chatSettings.model === "gpt-4o" ||
+      chatSettings.model === "o1" ||
+      chatSettings.model === "o1-mini" ||
+      chatSettings.model === "o1-preview"
+        ? 4096
+        : null
+
+    const _messages =
+      chatSettings.model === "o1" ||
+      chatSettings.model === "o1-mini" ||
+      chatSettings.model === "o1-preview"
+        ? messages.filter(m => m.role === "system")
+        : messages
+
     const response = await openai.chat.completions.create({
       model: chatSettings.model as ChatCompletionCreateParamsBase["model"],
-      messages: messages as ChatCompletionCreateParamsBase["messages"],
+      messages: _messages as ChatCompletionCreateParamsBase["messages"],
       temperature: chatSettings.temperature,
-      max_tokens:
-        chatSettings.model === "gpt-4-vision-preview" ||
-        chatSettings.model === "gpt-4o" ||
-        chatSettings.model === "o1" ||
-        chatSettings.model === "o1-mini"||
-        chatSettings.model === "o1-preview"
-          ? 4096
-          : null, // TODO: Fix
+      max_tokens: maxTokens,
       stream: true
     })
 
