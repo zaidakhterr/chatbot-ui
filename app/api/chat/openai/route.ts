@@ -27,10 +27,7 @@ export async function POST(request: Request) {
     // TODO: Fix
     const maxTokens =
       chatSettings.model === "gpt-4-vision-preview" ||
-      chatSettings.model === "gpt-4o" ||
-      chatSettings.model === "o1" ||
-      chatSettings.model === "o1-mini" ||
-      chatSettings.model === "o1-preview"
+      chatSettings.model === "gpt-4o"
         ? 4096
         : null
 
@@ -38,7 +35,15 @@ export async function POST(request: Request) {
       chatSettings.model === "o1" ||
       chatSettings.model === "o1-mini" ||
       chatSettings.model === "o1-preview"
-        ? messages.filter(m => m.role !== "system")
+        ? messages.map(m => {
+            if (m.role === "system") {
+              return {
+                ...m,
+                role: "developer"
+              }
+            }
+            return m
+          })
         : messages
 
     const response = await openai.chat.completions.create({
