@@ -38,7 +38,7 @@ export async function POST(request: Request) {
       chatSettings.model === "o1" ||
       chatSettings.model === "o1-mini" ||
       chatSettings.model === "o1-preview"
-        ? messages.filter(m => m.role === "system")
+        ? messages.filter(m => m.role !== "system")
         : messages
 
     const response = await openai.chat.completions.create({
