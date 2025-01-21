@@ -20,6 +20,8 @@ export type OpenAILLMID =
 export type GoogleLLMID =
   | "gemini-pro" // Gemini Pro
   | "gemini-pro-vision" // Gemini Pro Vision
+  | "gemini-1.5-pro-latest" // Gemini 1.5 Pro
+  | "gemini-1.5-flash" // Gemini 1.5 Flash
 
 // Anthropic Models
 export type AnthropicLLMID =
@@ -28,6 +30,7 @@ export type AnthropicLLMID =
   | "claude-3-haiku-20240307" // Claude 3 Haiku
   | "claude-3-sonnet-20240229" // Claude 3 Sonnet
   | "claude-3-opus-20240229" // Claude 3 Opus
+  | "claude-3-5-sonnet-20240620" // Claude 3.5 Sonnet
 
 // Mistral Models
 export type MistralLLMID =
@@ -40,6 +43,7 @@ export type GroqLLMID =
   | "llama3-8b-8192" // LLaMA3-8b
   | "llama3-70b-8192" // LLaMA3-70b
   | "mixtral-8x7b-32768" // Mixtral-8x7b
+  | "gemma-7b-it" // Gemma-7b IT
 
 // Perplexity Models (UPDATED 1/31/24)
 export type PerplexityLLMID =
