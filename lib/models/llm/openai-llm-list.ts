@@ -81,12 +81,12 @@ const GPT3_5Turbo: LLM = {
   }
 }
 
-// O1 (UPDATED 21/01/25)
-const O1: LLM = {
-  modelId: "o1",
-  modelName: "O1",
+// O1Preview (UPDATED 21/01/25)
+const O1Preview: LLM = {
+  modelId: "o1-preview",
+  modelName: "O1 Preview",
   provider: "openai",
-  hostedId: "o1",
+  hostedId: "o1-preview",
   platformLink: OPENAI_PLATORM_LINK,
   imageInput: false,
   pricing: {
@@ -119,6 +119,6 @@ export const OPENAI_LLM_LIST: LLM[] = [
   GPT4Vision,
   GPT4,
   GPT3_5Turbo,
-  O1,
+  O1Preview,
   OMini
 ]
