@@ -81,10 +81,43 @@ const GPT3_5Turbo: LLM = {
   }
 }
 
+// O1 (UPDATED 21/01/25)
+const O1: LLM = {
+  modelId: "o1",
+  modelName: "O1",
+  provider: "openai",
+  hostedId: "o1",
+  platformLink: OPENAI_PLATORM_LINK,
+  imageInput: false,
+  pricing: {
+    currency: "USD",
+    unit: "1M tokens",
+    inputCost: 15,
+    outputCost: 60
+  }
+}
+
+// O1Mini (UPDATED 21/01/25)
+const OMini: LLM = {
+  modelId: "o1-mini",
+  modelName: "O1 Mini",
+  provider: "openai",
+  hostedId: "o1-mini",
+  platformLink: OPENAI_PLATORM_LINK,
+  imageInput: false,
+  pricing: {
+    currency: "USD",
+    unit: "1M tokens",
+    inputCost: 3,
+    outputCost: 12
+  }
+}
+
 export const OPENAI_LLM_LIST: LLM[] = [
   GPT4o,
   GPT4Turbo,
   GPT4Vision,
   GPT4,
-  GPT3_5Turbo
+  GPT3_5Turbo,
+  O1
 ]
